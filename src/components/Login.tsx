@@ -1,46 +1,47 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState<string>('admin')
+    const [password, setPassword] = useState<string>('admin')
+    const navigate = useNavigate()
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('https://api.micmaclaynd.ru/avito/api/auth/login', {
-                email,
-                password,
-            }, {
-                withCredentials: true, // Добавлено для отправки cookies с запросом
-            });
-            console.log('Login successful', response.data);
+            const response = await axios.post('https://avito.micmaclaynd.ru/api/auth/login', {
+                username, password
+            })
+            console.log('Login successful', response.data)
+            navigate('/prices')
         } catch (error) {
-            console.error('Login failed', error);
+            console.error('Login failed', error)
         }
-    };
+    }
 
     return (
         <div>
             <h2>Login</h2>
             <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
+                type='email'
+                value={username}
+                defaultValue={'admin'}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder='Email'
             />
             <input
-                type="password"
+                type='password'
                 value={password}
+                defaultValue={'admin'}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder='Password'
             />
             <button onClick={handleLogin}>Login</button>
             <p>
-                Not registered yet? <Link to="/register">Register here</Link>
+                Not registered yet? <Link to='/admin/register'>Register here</Link>
             </p>
         </div>
-    );
-};
+    )
+}
 
-export default Login;
+export default Login

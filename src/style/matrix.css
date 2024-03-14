@@ -1,0 +1,109 @@
+/* Общие стили страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Стили для контейнера управления матрицами */
+.matrix-manager {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+/* Стили для текстовых полей ввода */
+.matrix-manager input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Стили для кнопок */
+.matrix-manager button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* Отступ снизу для кнопок */
+}
+
+.matrix-manager button:hover {
+    background-color: #286090;
+}
+
+/* Сброс стилей для последней кнопки в строке (убрать margin-right) */
+.matrix-manager button:last-child {
+    margin-right: 0;
+}
+
+/* Стили для списка результатов поиска и деталей матрицы */
+.matrix-manager ul,
+.matrix-manager div {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.matrix-manager li,
+.matrix-manager div {
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Стили для заголовков разделов */
+.matrix-manager h3 {
+    color: #333;
+    padding-bottom: 5px;
+}
+
+/* Стили для сообщений, например, "Матрицы не найдены" */
+.matrix-manager p {
+    color: #666;
+    text-align: center;
+}
+
+/* Медиа-запросы для адаптивной верстки */
+@media (max-width: 768px) {
+    .matrix-manager {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .matrix-manager button {
+        padding: 8px;
+        font-size: 14px;
+        width: calc(50% - 10px); /* Для более удобного отображения на планшетах */
+    }
+}
+
+@media (max-width: 480px) {
+    .matrix-manager {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .matrix-manager button {
+        width: 100%; /* Кнопки занимают всю ширину на мобильных устройствах */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .matrix-manager input[type="text"],
+    .matrix-manager button {
+        font-size: 14px;
+    }
+}

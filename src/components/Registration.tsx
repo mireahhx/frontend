@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Registration: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('https://api.micmaclaynd.ru/avito/api/auth/register', {
-                email,
-                password,
-            }, {
-                withCredentials: true, // Добавлено для отправки cookies с запросом
-            });
-            console.log('Registration successful', response.data);
+            const response = await axios.post('https://api.micmaclaynd.ru/api/auth/register', {
+                username, password,
+            })
+            console.log('Registration successful', response.data)
+            navigate('/prices')
         } catch (error) {
-            console.error('Registration failed', error);
+            console.error('Registration failed', error)
         }
-    };
+    }
 
     return (
         <div>
             <h2>Register</h2>
             <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="Email"
             />
             <input
@@ -36,11 +35,11 @@ const Registration: React.FC = () => {
                 placeholder="Password"
             />
             <button onClick={handleRegister}>Register</button>
-            <p>
+            <p className='middle-link'>
                 Already have an account? <Link to="/login">Login here</Link>
             </p>
         </div>
-    );
-};
+    )
+}
 
-export default Registration;
+export default Registration

@@ -1,0 +1,75 @@
+/* Общие стили страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Стили для контейнера управления ценами */
+.price-manager {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Стили для текстовых полей ввода и числовых полей */
+.price-manager input[type="text"],
+.price-manager input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Стили для кнопок */
+.price-manager button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.price-manager button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Стили для отображения деталей цены */
+.price-manager div {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+/* Заголовок секции деталей */
+.price-manager h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Стилизация параграфов с деталями */
+.price-manager p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Медиа-запросы для адаптивной верстки */
+@media (max-width: 600px) {
+    .price-manager input[type="text"],
+    .price-manager input[type="number"] {
+        width: 100%; /* Поля ввода на всю ширину на мобильных устройствах */
+    }
+
+    .price-manager button {
+        width: calc(50% - 10px);
+    }
+}
